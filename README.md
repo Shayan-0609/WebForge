@@ -26,7 +26,7 @@ A lightweight in-browser HTML editor with live preview.
 
 ## ⌨ Keyboard Shortcuts
 
-| Action        | Shortcut            |
+| Action        | Shortcut           |
 |---------------|--------------------|
 | Run           | Ctrl + R           |
 | Save          | Ctrl + S           |
