@@ -1,0 +1,209 @@
+/* =========================
+   VS CODE THEME VARIABLES
+========================= */
+
+/* Light Theme (VS Code Light+) */
+:root[data-bs-theme="light"] {
+  --vsc-bg: #ffffff;
+  --vsc-fg: #000000;
+  --vsc-comment: #008000;
+  --vsc-comment-important: #b89500;
+  --vsc-comment-todo: #005cc5;
+  --vsc-comment-fixme: #d73a49;
+  --vsc-comment-bug: #e5533d;
+  --vsc-comment-note: #6f42c1;
+  --vsc-comment-hack: #b86b00;
+  --vsc-comment-link: #0b7a75;
+  --vsc-keyword: #0000ff;
+  --vsc-control: #af00db;
+  --vsc-string: #a31515;
+  --vsc-number: #098658;
+  --vsc-function: #795e26;
+  --vsc-tag: #800000;
+  --vsc-attr: #ff0000;
+  --vsc-attr-value: #0000ff;
+  --vsc-punctuation: #000000;
+  --vsc-operator: #000000;
+  --vsc-property: #000000;
+  --vsc-class: #267f99;
+  --vsc-line-number: #2b91af;
+}
+
+/* Dark Theme (VS Code Dark+) */
+:root[data-bs-theme="dark"] {
+  --vsc-bg: #1e1e1e;
+  --vsc-fg: #d4d4d4;
+  --vsc-comment: #6a9955;
+  --vsc-comment-important: #ffcc00;
+  --vsc-comment-todo: #4fc1ff;
+  --vsc-comment-fixme: #ff6b6b;
+  --vsc-comment-bug: #ff8c66;
+  --vsc-comment-note: #c586c0;
+  --vsc-comment-hack: #d7ba7d;
+  --vsc-comment-link: #4ec9b0;
+  --vsc-keyword: #569cd6;
+  --vsc-control: #c586c0;
+  --vsc-string: #ce9178;
+  --vsc-number: #b5cea8;
+  --vsc-function: #dcdcaa;
+  --vsc-tag: #569cd6;
+  --vsc-attr: #9cdcfe;
+  --vsc-attr-value: #ce9178;
+  --vsc-punctuation: #d4d4d4;
+  --vsc-operator: #d4d4d4;
+  --vsc-property: #9cdcfe;
+  --vsc-class: #4ec9b0;
+  --vsc-line-number: #858585;
+}
+
+/* =========================
+   EDITOR BACKGROUND & TEXT
+========================= */
+pre[class*="language-"],
+code[class*="language-"] {
+  color: var(--vsc-fg) !important;
+  background-color: var(--vsc-bg) !important;
+  text-shadow: none !important;
+}
+
+/* =========================
+   TOKEN MAPPING (PRISM -> VS CODE)
+========================= */
+
+/* Comments */
+.token.comment,
+.token.prolog,
+.token.cdata {
+  color: var(--vsc-comment) !important;
+  font-style: italic;
+}
+
+/* Doctype */
+.token.doctype {
+  color: var(--vsc-keyword) !important;
+  font-style: normal !important;
+  font-weight: bold;
+}
+
+/* Punctuation & Operators */
+.token.punctuation {
+  color: var(--vsc-punctuation) !important;
+}
+
+.token.operator {
+  color: var(--vsc-operator) !important;
+}
+
+/* Tags, Variables, Properties */
+.token.tag {
+  color: var(--vsc-tag) !important;
+}
+
+.token.property {
+  color: var(--vsc-property) !important;
+}
+
+.token.variable {
+  color: var(--vsc-property) !important;
+}
+
+.token.selector {
+  color: var(--vsc-tag) !important;
+}
+
+/* Attributes */
+.token.attr-name {
+  color: var(--vsc-attr) !important;
+}
+
+.token.attr-value {
+  color: var(--vsc-attr-value) !important;
+}
+
+/* Strings & Numbers */
+.token.string,
+.token.char {
+  color: var(--vsc-string) !important;
+}
+
+.token.number {
+  color: var(--vsc-number) !important;
+}
+
+/* Keywords, Booleans, Entities */
+.token.keyword,
+.token.boolean,
+.token.constant,
+.token.entity {
+  color: var(--vsc-keyword) !important;
+}
+
+/* Control Flow (if, else, return) */
+.token.control-flow {
+  color: var(--vsc-control) !important;
+}
+
+/* Functions & Classes */
+.token.function {
+  color: var(--vsc-function) !important;
+}
+
+.token.class-name,
+.token.builtin {
+  color: var(--vsc-class) !important;
+}
+
+/* Regex & Important */
+.token.regex {
+  color: #d16969 !important;
+}
+
+.token.important {
+  font-weight: bold;
+  color: var(--vsc-keyword) !important;
+}
+
+/* Line Numbers specific for Prism */
+.line-numbers .line-numbers-rows>span:before {
+  color: var(--vsc-line-number) !important;
+}
+
+/* =========================
+   SPECIAL COMMENT TYPES
+========================= */
+
+.token.comment.comment-important {
+  color: var(--vsc-comment-important) !important;
+  font-weight: 600;
+}
+
+.token.comment.comment-todo {
+  color: var(--vsc-comment-todo) !important;
+  font-weight: 600;
+}
+
+.token.comment.comment-fixme {
+  color: var(--vsc-comment-fixme) !important;
+  font-weight: 600;
+}
+
+/* BUG separate color */
+.token.comment.comment-bug {
+  color: var(--vsc-comment-bug) !important;
+  font-weight: 600;
+}
+
+.token.comment.comment-note {
+  color: var(--vsc-comment-note) !important;
+  font-weight: 600;
+}
+
+/* HACK */
+.token.comment.comment-hack {
+  color: var(--vsc-comment-hack) !important;
+  font-weight: 600;
+}
+
+.token.comment.comment-link {
+  color: var(--vsc-comment-link) !important;
+}

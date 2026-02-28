@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+:root {
+  --body-bg: #E7E9EB;
+  --line-no-width: 0px;
+  --editor-font: "JetBrains Mono", "Fira Code", "IBM Plex Mono", "Source Code Pro", "Cascadia Code", "Victor Mono", "Roboto Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --tooltip-bg: var(--bs-black);
+  --tooltip-color: var(--bs-white);
+}
+
+[data-bs-theme=dark] {
+  --body-bg: #212529;
+  --tooltip-bg: var(--bs-indigo);
+  --tooltip-color: var(--bs-white);
+}
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--body-bg);
+}
+
+header {
+  background: var(--bs-indigo);
+  color: var(--bs-light);
+}
+
+.title {
+  font-weight: 600;
+  letter-spacing: .02em;
+}
+
+.title span {
+  font-weight: 700;
+}
+
+.title::before {
+  content: "<";
+  color: var(--bs-warning);
+  margin-right: .15em;
+}
+
+.title::after {
+  content: "/>";
+  color: var(--bs-light);
+  opacity: .75;
+  margin-left: .15em;
+}
+
+.title:hover::after {
+  animation: blink 1.2s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: .85
+  }
+
+  50% {
+    opacity: .35
+  }
+}
+
+.title::before,
+.title::after {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: inherit;
+  font-family: var(--bs-font-monospace);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+}
+
+.logo svg {
+  flex-grow: 1;
+}
+
+/* toolbar */
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  width: 100%;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+.toolbar-btn {
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding-inline: 1rem;
+  line-height: 1;
+}
+
+.toolbar-btn svg {
+  flex-shrink: 0;
+}
+
+/* Scrollbar */
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--bs-body-bg);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--bs-secondary);
+  border-radius: 6px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-secondary-color);
+  cursor: default;
+}
+
+/* Code Editor */
+
+.editor-wrapper {
+  position: relative;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  overflow: hidden;
+  /* outer scroll disable */
+}
+
+#highlighting {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  pointer-events: none;
+  overflow: auto;
+  padding: .5rem;
+  padding-left: var(--line-no-width);
+  /* space for numbers */
+}
+
+.editor-input {
+  position: absolute;
+  inset: 0;
+  overflow: auto;
+  padding: .5rem;
+  padding-left: var(--line-no-width);
+  outline: none;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--bs-body-color);
+  white-space: pre;
+  word-break: normal;
+  resize: none;
+  border: none;
+}
+
+.output-window {
+  width: 100%;
+  border: 1px solid var(--bs-border-color);
+  background: white;
+}
+
+.form-switch .form-check-label {
+  float: left;
+}
+
+.form-switch .form-check-input {
+  float: right;
+}
+
+.card-shadow {
+  box-shadow: var(--shadow);
+}
+
+.editor-input::selection,
+#highlighting code::selection {
+  background: rgba(102, 16, 242, 0.35);
+}
+
+[data-bs-theme=dark] .editor-input::selection,
+[data-bs-theme=dark] #highlighting code::selection {
+  background: rgba(102, 16, 242, 0.45);
+}
+
+/* Custom Tooltip */
+.custom-tooltip {
+  --bs-tooltip-bg: var(--tooltip-bg);
+  --bs-tooltip-color: var(--tooltip-color);
+}
+
+.custom-tooltip .shortcut {
+  background-color: var(--bs-body-color);
+  color: var(--bs-body-bg);
+  border-radius: 0.25rem;
+  padding: 0.1em 0.3em;
+  font-family: var(--bs-font-monospace);
+  font-size: 0.85em;
+}
+
+/* Prism Fixes */
+
+/* Force Fira Code inside Prism */
+.editor-wrapper,
+.editor-input,
+pre[class*="language-"],
+code[class*="language-"] {
+  font-family: var(--editor-font);
+}
+
+pre,
+code,
+.editor-input {
+  font-variant-ligatures: contextual;
+  font-feature-settings: "liga" 1, "calt" 1;
+}
+
+/* textarea + prism wrapping sync */
+#editorInput,
+#highlighting,
+#highlighting code {
+  white-space: pre;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+/* wrap mode */
+.wrap-enabled #editorInput,
+.wrap-enabled #highlighting,
+.wrap-enabled #highlighting code {
+  white-space: pre-wrap;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+pre.line-numbers.wrap-enabled {
+  white-space: pre-wrap !important;
+}
+
+.line-numbers-rows {
+  pointer-events: none;
+}
+
+/* ===== GRID LAYOUT ===== */
+
+.editor-section {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* 📱 Mobile default: stacked */
+.editor-section {
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+}
+
+/* editor height mobile */
+.editor-panel {
+  min-height: 300px;
+}
+
+.output-window {
+  min-height: 300px;
+}
+
+
+/* 💻 Tablet and up (≥768px) */
+@media (min-width: 768px) {
+
+  .editor-section {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: min(60vh, 700px);
+  }
+
+  .editor-panel,
+  .output-window {
+    height: 100%;
+  }
+
+  .editor-wrapper {
+    height: 100%;
+  }
+}
+
+
+/* 🖥 Large screens tuning */
+@media (min-width: 1200px) {
+
+  .editor-section {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+
+/* 🖥 Ultra wide tuning */
+@media (min-width: 1400px) {
+
+  .editor-section {
+    grid-template-columns: 1.2fr 0.8fr;
+  }
+}
