@@ -92,3 +92,14 @@ You are free to:
 As long as the original license and copyright notice are included.
 
 See the LICENSE file for full details.
+
+---
+
+## 🤝 Acknowledgements
+
+WebForge was developed with the assistance of AI-powered development tools for guidance, debugging, and workflow support during development.
+
+This project also leverages the following open-source libraries:
+
+- Prism.js — Syntax highlighting
+- Prettier — Code formatting
