@@ -59,8 +59,8 @@ Preview runs inside a sandboxed iframe
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/screenshots/dark.png" width="45%">
-  <img src="assets/screenshots/light.png" width="45%">
+  <img src="assets/Screenshots/dark.png" width="45%">
+  <img src="assets/Screenshots/light.png" width="45%">
 </p>
 
 ---
