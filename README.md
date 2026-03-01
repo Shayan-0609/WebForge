@@ -3,13 +3,34 @@
 ![Version: 1.0.0](https://img.shields.io/badge/version-v1.0.0-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-A lightweight in-browser HTML editor with live preview.
+A lightweight HTML playground for mobile-first developers — powered by real browser rendering for predictable results.
 
 ---
 
 ## 🔗 Live Demo
 
 [![Open WebForge](https://img.shields.io/badge/WebForge-Visit-blue)](https://Shayan-0609.github.io/WebForge/)
+
+---
+
+## 🎯 Why WebForge?
+
+WebForge was built to solve a real problem faced by mobile-first developers.
+
+Many Android code editor apps rely on the system WebView, which can introduce
+rendering inconsistencies such as font-size scaling differences, layout shifts,
+and unpredictable alignment behavior.
+
+This makes debugging HTML/CSS frustrating, especially when:
+- The editor shows one size (e.g., 20px)
+- The browser renders another (e.g., 16px)
+- Constant switching between editor and browser is required
+
+WebForge eliminates this friction by running directly inside the real mobile
+browser with a sandboxed live preview. What you see is what the browser actually renders.
+
+The goal is simple:
+Fast, predictable snippet testing without heavy dependencies.
 
 ---
 
