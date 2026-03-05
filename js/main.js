@@ -41,6 +41,41 @@ document.addEventListener("DOMContentLoaded", () => {
    ==================================
 -->`;
 
+  // --- HTML Boilerplate ---
+  const htmlBoilerplate = `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A new web page" />
+    <meta name="robots" content="index, follow" />
+    <link rel="icon" href="favicon.ico" />
+    <title>Document</title>
+    <style>
+      /* Minimal CSS Reset */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: system-ui, sans-serif;
+        background: #fafbfc;
+        color: #222;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <!-- Start building your page here -->
+    %%CURSOR%%
+  </body>
+</html>`;
+  
   // --- Enable Tooltips ---
   const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
   const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
@@ -121,18 +156,55 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // --- TAB KEY & AUTO INDENT LOGIC ---
-
   editorInput.addEventListener("keydown", (e) => {
     // 1. Tab Key Support (2 Spaces)
     if (e.key === "Tab") {
-      e.preventDefault();
       const start = editorInput.selectionStart;
       const end = editorInput.selectionEnd;
-
-      editorInput.value = editorInput.value.substring(0, start) + "  " + editorInput.value.substring(end);
-
+      const text = editorInput.value;
+    
+      // Check if previous character is "!"
+      if (text[start - 1] === "!") {
+        e.preventDefault();
+      
+        const before = text.substring(0, start - 1);
+        const after = text.substring(end);
+      
+        let template = htmlBoilerplate;
+      
+        const cursorIndex = template.indexOf("%%CURSOR%%");
+      
+        template = template.replace("%%CURSOR%%", "");
+      
+        editorInput.value = before + template + after;
+      
+        const finalCursor = before.length + cursorIndex;
+      
+        editorInput.focus();
+        editorInput.selectionStart = editorInput.selectionEnd = finalCursor;
+      
+        // --- Auto scroll to cursor ---
+        const beforeCursor = editorInput.value.substring(0, finalCursor);
+        const lineCount = beforeCursor.split("\n").length;
+      
+        const lineHeight = parseFloat(getComputedStyle(editorInput).lineHeight) || 20;
+      
+        editorInput.scrollTop = (lineCount - 1) * lineHeight;
+      
+        updateHighlighting();
+        updateOutput();
+      
+        return;
+      }
+    
+      // Normal Tab (2 spaces)
+      e.preventDefault();
+    
+      editorInput.value =
+      text.substring(0, start) + "  " + text.substring(end);
+    
       editorInput.selectionStart = editorInput.selectionEnd = start + 2;
-
+    
       debouncedHighlight();
       if (autoRunToggle.checked) debouncedUpdateOutput();
     }
