@@ -126,7 +126,12 @@ document.addEventListener("DOMContentLoaded", () => {
       </html>`;
     }
 
-    outputWindow.srcdoc = documentContent;
+    const iframeDoc =
+    outputWindow.contentDocument || outputWindow.contentWindow.document;
+
+    iframeDoc.open();
+    iframeDoc.write(documentContent);
+    iframeDoc.close();
   };
 
   // Sync Scrolling
@@ -138,7 +143,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Update Prism Highlighting
   const updateHighlighting = () => {
     let code = editorInput.value;
-    if (code[code.length - 1] === "\n") code += " ";
+    if (code.length && code[code.length - 1] === "\n") code += " ";
     highlighting.textContent = code;
 
     // Prism highlight call
@@ -165,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const text = editorInput.value;
     
       // Check if previous character is "!"
-      if (text[start - 1] === "!") {
+      if (text.trim() === "!" && start === text.length) {
         e.preventDefault();
       
         const before = text.substring(0, start - 1);
@@ -269,9 +274,9 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Debounced version of output update
-  const debouncedUpdateOutput = debounce(updateOutput, 500);
+  const debouncedUpdateOutput = debounce(updateOutput, 350);
 
-  const debouncedHighlight = debounce(updateHighlighting, 120);
+  const debouncedHighlight = debounce(updateHighlighting, 80);
 
   // Input Event
   editorInput.addEventListener("input", () => {
@@ -396,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
       mono: "SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace"
     };
 
-    document.documentElement.style.setProperty("--editor-font", fonts[fontFamily]);
+    document.documentElement.style.setProperty("--editor-font", fonts[fontFamily] || fonts.mono);
 
     fontButtons.forEach(btn => {
       btn.classList.toggle("active", btn.dataset.font === fontFamily);
@@ -421,7 +426,10 @@ document.addEventListener("DOMContentLoaded", () => {
   // --- TOOLBAR BUTTONS LOGIC ---
 
   // Run
-  runBtn.addEventListener("click", updateOutput);
+  runBtn.addEventListener("click", () => {
+    outputWindow.src = "about:blank";
+    setTimeout(updateOutput, 20);
+  });
 
   // Save (To LocalStorage)
   const saveCodeToLocal = () => {
@@ -582,7 +590,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const a = document.createElement("a");
     a.href = url;
     
-    const filename = prompt("File name:", "index.html") || "index.html";
+    const filename = (prompt("File name:", "index.html") || "index.html").trim() || "index.html";
     a.download = filename;
 
     document.body.appendChild(a);
