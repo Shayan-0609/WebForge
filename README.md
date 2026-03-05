@@ -1,6 +1,6 @@
 # WebForge
 
-![Version: 1.1.0](https://img.shields.io/badge/version-v1.1.0-blue)
+![Version: 1.1.1](https://img.shields.io/badge/version-v1.1.1-blue)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 A lightweight HTML playground for mobile-first developers — powered by real browser rendering for predictable results.
