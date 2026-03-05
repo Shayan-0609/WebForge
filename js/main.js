@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
      7.  Reset All: Ctrl + Alt + R
      8.  Font Size +: Ctrl + +
      9.  Font Size -: Ctrl + -
+    10.  HTML5 Template: ! + Tab
    ==================================
 -->`;
 
