@@ -39,6 +39,7 @@ Fast, predictable snippet testing without heavy dependencies.
 -   Live HTML preview (sandboxed iframe)
 -   Syntax highlighting (Prism.js)
 -   Auto indent & Tab support
+-   Emmet-style `! + Tab` HTML boilerplate generation
 -   Code formatting (Prettier)
 -   Theme switching (Light/Dark)
 -   Font customization
@@ -53,17 +54,18 @@ Fast, predictable snippet testing without heavy dependencies.
 
 ## ⌨ Keyboard Shortcuts
 
-| Action        | Shortcut           |
-|---------------|--------------------|
-| Run           | Ctrl + R           |
-| Save          | Ctrl + S           |
-| Format        | Alt + Shift + F    |
-| Reset         | Ctrl + Shift + R   |
-| Load          | Ctrl + Shift + L   |
-| Save As       | Ctrl + Shift + A   |
-| Reset All     | Ctrl + Alt + R     |
-| Font Size +   | Ctrl + +           |
-| Font Size -   | Ctrl + -           |
+| Action         | Shortcut           |
+|----------------|--------------------|
+| Run            | Ctrl + R           |
+| Save           | Ctrl + S           |
+| Format         | Alt + Shift + F    |
+| Reset          | Ctrl + Shift + R   |
+| Load           | Ctrl + Shift + L   |
+| Save As        | Ctrl + Shift + A   |
+| Reset All      | Ctrl + Alt + R     |
+| Font Size +    | Ctrl + +           |
+| Font Size -    | Ctrl + -           |
+| HTML5 Template | ! + Tab            |
 
 ---
 
